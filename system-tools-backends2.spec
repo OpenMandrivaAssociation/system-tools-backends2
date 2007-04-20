@@ -46,20 +46,20 @@ rm -rf $RPM_BUILD_ROOT
 
 %makeinstall_std
 
-install -D -m 755 %SOURCE1 %buildroot%_initrddir/%name
+install -D -m 755 %SOURCE1 %buildroot%_initrddir/%oname
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%_post_service %name
+%_post_service %oname
 %preun
-%_preun_service %name
+%_preun_service %oname
 
 %files
 %defattr(-, root, root)
 %doc README AUTHORS NEWS 
-%config(noreplace) %_initrddir/%name
+%config(noreplace) %_initrddir/%oname
 %config(noreplace) %_sysconfdir/dbus-1/system.d/system-tools-backends.conf
 %_bindir/%oname
 %_datadir/dbus-1/services/org.freedesktop.SystemToolsBackends*.service
