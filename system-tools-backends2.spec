@@ -2,7 +2,7 @@
 Summary:	GNOME System Tools Backends
 Name: 		system-tools-backends2
 Version: 2.2.1
-Release: %mkrel 1
+Release: %mkrel 2
 License: 	LGPL
 Group: 		System/Configuration/Other
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{oname}/%{oname}-%{version}.tar.bz2
@@ -59,7 +59,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-, root, root)
 %doc README AUTHORS NEWS 
-%config(noreplace) %_initrddir/%oname
+%_initrddir/%oname
 %config(noreplace) %_sysconfdir/dbus-1/system.d/system-tools-backends.conf
 %_bindir/%oname
 %_datadir/dbus-1/services/org.freedesktop.SystemToolsBackends*.service
