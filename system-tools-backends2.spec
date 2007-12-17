@@ -8,7 +8,6 @@ Group: 		System/Configuration/Other
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{oname}/%{oname}-%{version}.tar.bz2
 Source1: system-tools-backends
 Patch0:	system-tools-backends-2.2.0-mandriva.patch
-BuildRoot: 	%{_tmppath}/%{name}-%{version}-buildroot
 URL: 		http://www.gnome.org/projects/gst/
 BuildRequires:	dbus-glib-devel
 BuildRequires:	perl-Net-DBus
