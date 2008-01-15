@@ -12,6 +12,8 @@ BuildRoot: 	%{_tmppath}/%{name}-%{version}-buildroot
 URL: 		http://www.gnome.org/projects/gst/
 BuildRequires:	dbus-glib-devel
 BuildRequires:	perl-Net-DBus
+BuildRequires:	glib2-devel >= 2.15.2
+BuildRequires:	polkit-devel
 #gw for intltool
 BuildRequires:	perl-XML-Parser
 Requires(preun): rpm-helper
