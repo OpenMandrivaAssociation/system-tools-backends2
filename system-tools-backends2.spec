@@ -1,7 +1,7 @@
 %define oname system-tools-backends
 Summary:	GNOME System Tools Backends
 Name: 		system-tools-backends2
-Version: 2.5.4
+Version: 2.5.5
 Release: %mkrel 1
 License: 	LGPL
 Group: 		System/Configuration/Other
@@ -63,6 +63,7 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) %_sysconfdir/dbus-1/system.d/system-tools-backends.conf
 %_bindir/%oname
 %_datadir/dbus-1/system-services/org.freedesktop.SystemToolsBackends*.service
+%_datadir/PolicyKit/policy/system-tools-backends.policy
 %_datadir/system-tools-backends-2.0/
 %_libdir/pkgconfig/system-tools-backends-2.0.pc
 
