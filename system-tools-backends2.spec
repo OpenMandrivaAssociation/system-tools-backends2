@@ -50,8 +50,8 @@ This package contains the backends of GNOME System Tools.
 rm -rf $RPM_BUILD_ROOT
 
 %makeinstall_std
-
 install -D -m 755 %SOURCE1 %buildroot%_initrddir/%oname
+mkdir -p %_localstatedir/cache/%oname
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -71,5 +71,6 @@ rm -rf $RPM_BUILD_ROOT
 %_datadir/PolicyKit/policy/system-tools-backends.policy
 %_datadir/system-tools-backends-2.0/
 %_libdir/pkgconfig/system-tools-backends-2.0.pc
+%_localstatedir/cache/%oname
 
 
