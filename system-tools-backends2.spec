@@ -2,20 +2,20 @@
 Summary:	GNOME System Tools Backends
 Name: 		system-tools-backends2
 Version: 2.6.0
-Release: %mkrel 4
-License: 	LGPL
+Release: %mkrel 2
+License: 	GPLv2+ and LGPLv2+
 Group: 		System/Configuration/Other
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{oname}/%{oname}-%{version}.tar.bz2
 Source1: system-tools-backends
 Patch0:	system-tools-backends-2.2.0-mandriva.patch
+Patch1: system-tools-backends-2.6.0-fix-open.patch
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-buildroot
 URL: 		http://www.gnome.org/projects/gst/
 BuildRequires:	dbus-glib-devel
 BuildRequires:	perl-Net-DBus
 BuildRequires:	glib2-devel >= 2.15.2
 BuildRequires:	polkit-devel
-#gw for intltool
-BuildRequires:	perl-XML-Parser
+BuildRequires:	intltool
 Requires(preun): rpm-helper
 Requires(post): rpm-helper
 
@@ -38,8 +38,11 @@ This package contains the backends of GNOME System Tools.
 %prep
 %setup -q -n %oname-%version
 %patch0 -p1 -b .mandriva
+%patch1 -p1
 
 %build
+#gw for backports, it has hardwired LOCALSTATEDIR/run as path
+%define _localstatedir /var
 %configure2_5x --with-stb-group=wheel
 %make
 
