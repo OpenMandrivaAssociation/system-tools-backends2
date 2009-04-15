@@ -1,14 +1,16 @@
 %define oname system-tools-backends
 Summary:	GNOME System Tools Backends
 Name: 		system-tools-backends2
-Version: 2.6.0
-Release: %mkrel 2
+Version: 2.6.1
+Release: %mkrel 1
 License: 	GPLv2+ and LGPLv2+
 Group: 		System/Configuration/Other
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{oname}/%{oname}-%{version}.tar.bz2
 Source1: system-tools-backends
 Patch0:	system-tools-backends-2.6.0-mandriva.patch
-Patch1: system-tools-backends-2.6.0-fix-open.patch
+#gw fix gettext installation
+#http://bugzilla.gnome.org/show_bug.cgi?id=579044
+Patch2: system-tools-backends-2.6.1-define-gettext-package.patch
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-buildroot
 URL: 		http://www.gnome.org/projects/gst/
 BuildRequires:	dbus-glib-devel
@@ -38,7 +40,8 @@ This package contains the backends of GNOME System Tools.
 %prep
 %setup -q -n %oname-%version
 %patch0 -p1 -b .mandriva
-%patch1 -p1
+%patch2 -p1
+autoreconf
 
 %build
 #gw for backports, it has hardwired LOCALSTATEDIR/run as path
@@ -51,7 +54,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %makeinstall_std
 install -D -m 755 %SOURCE1 %buildroot%_initrddir/%oname
-mkdir -p %_localstatedir/cache/%oname
+mkdir -p %buildroot%_localstatedir/cache/%oname
+%find_lang %oname
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -61,7 +65,7 @@ rm -rf $RPM_BUILD_ROOT
 %preun
 %_preun_service %oname
 
-%files
+%files -f %oname.lang
 %defattr(-, root, root)
 %doc README AUTHORS NEWS 
 %_initrddir/%oname
