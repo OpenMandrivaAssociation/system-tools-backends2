@@ -1,22 +1,20 @@
 %define oname system-tools-backends
 Summary:	GNOME System Tools Backends
 Name: 		system-tools-backends2
-Version: 2.6.1
+Version: 2.8
 Release: %mkrel 1
 License: 	GPLv2+ and LGPLv2+
 Group: 		System/Configuration/Other
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{oname}/%{oname}-%{version}.tar.bz2
 Source1: system-tools-backends
 Patch0:	system-tools-backends-2.6.0-mandriva.patch
-#gw fix gettext installation
-#http://bugzilla.gnome.org/show_bug.cgi?id=579044
-Patch2: system-tools-backends-2.6.1-define-gettext-package.patch
+Patch1: system-tools-backends-2.8-fix-path.patch
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-buildroot
 URL: 		http://www.gnome.org/projects/gst/
 BuildRequires:	dbus-glib-devel
 BuildRequires:	perl-Net-DBus
 BuildRequires:	glib2-devel >= 2.15.2
-BuildRequires:	polkit-devel
+BuildRequires:	polkit-1-devel
 BuildRequires:	intltool
 Requires(preun): rpm-helper
 Requires(post): rpm-helper
@@ -40,8 +38,7 @@ This package contains the backends of GNOME System Tools.
 %prep
 %setup -q -n %oname-%version
 %patch0 -p1 -b .mandriva
-%patch2 -p1
-autoreconf
+%patch1 -p1
 
 %build
 #gw for backports, it has hardwired LOCALSTATEDIR/run as path
@@ -69,10 +66,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-, root, root)
 %doc README AUTHORS NEWS 
 %_initrddir/%oname
-%config(noreplace) %_sysconfdir/dbus-1/system.d/system-tools-backends.conf
-%_bindir/%oname
+%config(noreplace) %_sysconfdir/dbus-1/system.d/org.freedesktop.SystemToolsBackends.conf
+%_sbindir/%oname
 %_datadir/dbus-1/system-services/org.freedesktop.SystemToolsBackends*.service
-%_datadir/PolicyKit/policy/system-tools-backends.policy
+%_datadir/polkit-1/actions/org.freedesktop.SystemToolsBackends.policy
 %_datadir/system-tools-backends-2.0/
 %_libdir/pkgconfig/system-tools-backends-2.0.pc
 %_localstatedir/cache/%oname
