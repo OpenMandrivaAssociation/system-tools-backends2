@@ -17,6 +17,7 @@ BuildRequires:	polkit-1-devel
 BuildRequires:	intltool
 Requires(preun): rpm-helper
 Requires(post): rpm-helper
+Requires:	polkit-agent
 
 %description
 Day-to-day system management on Unix systems is a chore. Even when 
