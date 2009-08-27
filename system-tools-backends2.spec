@@ -2,12 +2,11 @@
 Summary:	GNOME System Tools Backends
 Name: 		system-tools-backends2
 Version: 2.8.1
-Release: %mkrel 1
+Release: %mkrel 2
 License: 	GPLv2+ and LGPLv2+
 Group: 		System/Configuration/Other
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{oname}/%{oname}-%{version}.tar.bz2
-Source1: system-tools-backends
-Patch0:	system-tools-backends-2.6.0-mandriva.patch
+Patch0:	system-tools-backends-2.8.1-mandriva.patch
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-buildroot
 URL: 		http://www.gnome.org/projects/gst/
 BuildRequires:	dbus-glib-devel
@@ -15,8 +14,6 @@ BuildRequires:	perl-Net-DBus
 BuildRequires:	glib2-devel >= 2.15.2
 BuildRequires:	polkit-1-devel
 BuildRequires:	intltool
-Requires(preun): rpm-helper
-Requires(post): rpm-helper
 Requires:	polkit-agent
 
 %description
@@ -49,22 +46,21 @@ This package contains the backends of GNOME System Tools.
 rm -rf $RPM_BUILD_ROOT
 
 %makeinstall_std
-install -D -m 755 %SOURCE1 %buildroot%_initrddir/%oname
 mkdir -p %buildroot%_localstatedir/cache/%oname
 %find_lang %oname
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post
-%_post_service %oname
-%preun
-%_preun_service %oname
+%pre
+if [ -e %_initrddir/%oname ]; then
+/sbin/service %oname stop > /dev/null ||:
+/sbin/chkconfig --del %oname || :
+fi
 
 %files -f %oname.lang
 %defattr(-, root, root)
 %doc README AUTHORS NEWS 
-%_initrddir/%oname
 %config(noreplace) %_sysconfdir/dbus-1/system.d/org.freedesktop.SystemToolsBackends.conf
 %_sbindir/%oname
 %_datadir/dbus-1/system-services/org.freedesktop.SystemToolsBackends*.service
