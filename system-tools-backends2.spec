@@ -2,7 +2,7 @@
 Summary:	GNOME System Tools Backends
 Name: 		system-tools-backends2
 Version: 2.8.1
-Release: %mkrel 2
+Release: %mkrel 3
 License: 	GPLv2+ and LGPLv2+
 Group: 		System/Configuration/Other
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{oname}/%{oname}-%{version}.tar.bz2
@@ -15,6 +15,7 @@ BuildRequires:	glib2-devel >= 2.15.2
 BuildRequires:	polkit-1-devel
 BuildRequires:	intltool
 Requires:	polkit-agent
+Conflicts:	system-tools-backends
 
 %description
 Day-to-day system management on Unix systems is a chore. Even when 
