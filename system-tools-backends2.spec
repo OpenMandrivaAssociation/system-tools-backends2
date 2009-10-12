@@ -1,8 +1,8 @@
 %define oname system-tools-backends
 Summary:	GNOME System Tools Backends
 Name: 		system-tools-backends2
-Version: 2.8.1
-Release: %mkrel 3
+Version: 2.8.2
+Release: %mkrel 1
 License: 	GPLv2+ and LGPLv2+
 Group: 		System/Configuration/Other
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{oname}/%{oname}-%{version}.tar.bz2
