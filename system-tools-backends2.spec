@@ -1,15 +1,12 @@
 %define oname system-tools-backends
 Summary:	GNOME System Tools Backends
 Name: 		system-tools-backends2
-Version: 2.9.0
-Release: %mkrel 2
+Version: 2.9.1
+Release: %mkrel 1
 License: 	GPLv2+ and LGPLv2+
 Group: 		System/Configuration/Other
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{oname}/%{oname}-%{version}.tar.bz2
 Patch0:	system-tools-backends-2.8.1-mandriva.patch
-#gw from upstream: fix dbus service names
-Patch1:		0001-Fix-missing-D-Bus-.service-files-for-User-s-Self-Gro.patch
-Patch2:		0002-fix-service-files-in-makefiles.patch
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-buildroot
 URL: 		http://www.gnome.org/projects/gst/
 BuildRequires:	dbus-glib-devel
@@ -38,8 +35,6 @@ This package contains the backends of GNOME System Tools.
 
 %prep
 %setup -q -n %oname-%version
-%apply_patches
-autoreconf -fi
 
 %build
 #gw for backports, it has hardwired LOCALSTATEDIR/run as path
