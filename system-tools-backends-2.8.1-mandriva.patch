@@ -1,0 +1,27 @@
+diff -p -up system-tools-backends-2.8.1/Utils/Platform.pm.mandriva system-tools-backends-2.8.1/Utils/Platform.pm
+--- system-tools-backends-2.8.1/Utils/Platform.pm.mandriva	2009-08-18 11:42:02.000000000 +0200
++++ system-tools-backends-2.8.1/Utils/Platform.pm	2009-08-27 08:30:08.000000000 +0200
+@@ -63,6 +63,14 @@ my $PLATFORM_INFO = {
+   "mandrake-10.2"   => [ "Linux Mandrake", "2005" ],
+   "mandriva-2006.0" => [ "Mandriva Linux", "2006.0" ],
+   "mandriva-2006.1" => [ "Mandriva Linux", "2006.1" ],
++  "mandriva-2007.0" => [ "Mandriva Linux", "2007.0" ],
++  "mandriva-2007.1" => [ "Mandriva Linux", "2007.1" ],
++  "mandriva-2008.0" => [ "Mandriva Linux", "2008.0" ],
++  "mandriva-2008.1" => [ "Mandriva Linux", "2008.1" ],
++  "mandriva-2009.0" => [ "Mandriva Linux", "2009.0" ],
++  "mandriva-2009.1" => [ "Mandriva Linux", "2009.1" ],
++  "mandriva-2010.0" => [ "Mandriva Linux", "2010.0" ],
++  "mandriva-2010.1" => [ "Mandriva Linux", "2010.1" ],
+   "yoper-2.2"       => [ "Yoper Linux", "2.2" ],
+   "blackpanther-4.0" => [ "Black Panther OS", "4.0", "" ],
+   "conectiva-9"     => [ "Conectiva Linux", "9", "" ],
+@@ -375,7 +383,7 @@ sub guess
+                   [ \&check_distro_file, "/etc/mandrake-release", "mandrake", "^Linux Mandrake release (\\S+)" ],
+                   [ \&check_distro_file, "/etc/mandrake-release", "mandrake", "^Mandrake( L|l)inux release (\\S+)" ],
+                   [ \&check_distro_file, "/etc/mandriva-release", "mandriva", "^Linux Mandriva release (\\S+)" ],
+-                  [ \&check_distro_file, "/etc/mandriva-release", "mandriva", "^Mandriva( L|l)inux release (\\S+)" ],
++                  [ \&check_distro_file, "/etc/mandriva-release", "mandriva", "^Mandriva Linux release (\\S+)" ],
+                   [ \&check_distro_file, "/etc/conectiva-release", "conectiva", "^Conectiva Linux (\\S+)" ],
+                   [ \&check_distro_file, "/etc/redhat-release", "redhat", "^Red Hat Linux.*\\s+(\\S+)" ],
+                   [ \&check_distro_file, "/etc/openna-release", "openna", "^OpenNA (\\S+)" ],
