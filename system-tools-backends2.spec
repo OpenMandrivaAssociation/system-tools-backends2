@@ -7,6 +7,7 @@ Release:	2
 License:	GPLv2+ and LGPLv2+
 Group:		System/Configuration/Other
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{oname}/%{oname}-%{version}.tar.bz2
+Source1:	system-tools-backends2.rpmlintrc
 Patch0:		system-tools-backends-2.8.1-mandriva.patch
 URL:		http://www.gnome.org/projects/gst/
 BuildRequires:	pkgconfig(dbus-glib-1)
