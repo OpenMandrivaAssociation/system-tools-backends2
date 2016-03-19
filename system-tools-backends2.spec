@@ -3,7 +3,7 @@
 Summary:	GNOME System Tools Backends
 Name:		system-tools-backends2
 Version:	2.10.2
-Release:	3
+Release:	4
 License:	GPLv2+ and LGPLv2+
 Group:		System/Configuration/Other
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{oname}/%{oname}-%{version}.tar.bz2
