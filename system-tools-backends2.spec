@@ -3,7 +3,7 @@
 Summary:	GNOME System Tools Backends
 Name:		system-tools-backends2
 Version:	2.10.2
-Release:	5
+Release:	6
 License:	GPLv2+ and LGPLv2+
 Group:		System/Configuration/Other
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{oname}/%{oname}-%{version}.tar.bz2
@@ -12,6 +12,7 @@ Patch0:		system-tools-backends-2.8.1-mandriva.patch
 URL:		http://www.gnome.org/projects/gst/
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	perl-Net-DBus
+BuildRequires:	perl-devel
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(polkit-gobject-1)
 BuildRequires:	intltool
@@ -59,4 +60,3 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/%{oname}
 %{_datadir}/system-tools-backends-2.0/
 %{_libdir}/pkgconfig/system-tools-backends-2.0.pc
 %{_localstatedir}/cache/%{oname}
-
