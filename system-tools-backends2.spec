@@ -9,6 +9,7 @@ Group:		System/Configuration/Other
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{oname}/%{oname}-%{version}.tar.bz2
 Source1:	system-tools-backends2.rpmlintrc
 Patch0:		system-tools-backends-2.8.1-mandriva.patch
+Patch1:		system-tools-backends2-omv_issue1081.patch
 URL:		http://www.gnome.org/projects/gst/
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	perl-Net-DBus
@@ -37,6 +38,8 @@ This package contains the backends of GNOME System Tools.
 
 %prep
 %setup -q -n %{oname}-%{version}
+
+%patch -P1 -p1
 
 %build
 #gw for backports, it has hardwired LOCALSTATEDIR/run as path
