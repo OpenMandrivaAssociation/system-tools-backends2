@@ -1,0 +1,15 @@
+--- system-tools-backends-2.10.2/Users/Users.pm	2016-09-02 16:36:11.573788908 -0400
++++ system-tools-backends-2.10.2/Users/Users.pm-new	2016-09-02 16:38:30.797117052 -0400
+@@ -624,9 +624,10 @@
+     {
+       # use adduser if available and valid (slackware one is b0rk)
+       # set empty gecos fields and password, they will be filled out later
+-      @command = ($cmd_adduser, "--gecos", "",
+-                                "--disabled-password");
++      #@command = ($cmd_adduser, "--gecos", "",
++      #                          "--disabled-password");
+ 
++      @command = ($cmd_useradd);
+       push (@command, ("--home", $$user[$HOME])) if ($$user[$HOME]);
+       push (@command, ("--shell", $$user[$SHELL])) if ($$user[$SHELL]);
+       push (@command, ("--uid", $$user[$UID])) if ($real_uid);
