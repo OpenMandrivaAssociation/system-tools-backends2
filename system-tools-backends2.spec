@@ -11,6 +11,11 @@ Source1:	system-tools-backends2.rpmlintrc
 Patch0:		system-tools-backends-2.8.1-mandriva.patch
 Patch1:		system-tools-backends2-omv_issue1081.patch
 URL:		https://www.gnome.org/projects/gst/
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	perl-Net-DBus
 BuildRequires:	perl-devel
